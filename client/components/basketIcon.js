@@ -3,7 +3,6 @@ import React, { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectBasketItems, selectBasketTotal } from "../slices/basketSlice";
 import { useNavigation } from "@react-navigation/native";
-import { selectResturant } from "../slices/resturantSlice";
 import { themeColors } from "../theme";
 import PropTypes from "prop-types";
 
@@ -18,23 +17,71 @@ const BasketIcon = () => {
   if (!itemCount) return null;
 
   return (
-    <View className="absolute bottom-5 w-full z-50">
+    <View
+      style={{
+        position: "absolute",
+        bottom: 20,
+        width: "100%",
+        zIndex: 50,
+        alignItems: "center",
+      }}
+    >
       <TouchableOpacity
-        style={{ backgroundColor: themeColors.bgColor(1) }}
+        style={{
+          backgroundColor: themeColors.bgColor(1),
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginHorizontal: 20,
+          borderRadius: 30,
+          paddingVertical: 12,
+          paddingHorizontal: 16,
+          shadowColor: "#000",
+          shadowOffset: { width: 0, height: 2 },
+          shadowOpacity: 0.3,
+          shadowRadius: 4,
+          elevation: 5,
+        }}
         onPress={() => navigation.navigate("Cart")}
-        className="flex-row justify-between items-center mx-5 rounded-full p-4 py-3 shadow-lg"
       >
         <View
-          className="p-2 px-4 rounded-full"
-          style={{ backgroundColor: "rgba(255,255,255,0.3)" }}
+          style={{
+            paddingVertical: 8,
+            paddingHorizontal: 16,
+            borderRadius: 30,
+            backgroundColor: "rgba(255,255,255,0.3)",
+            marginRight: 10,
+          }}
         >
-          <Text className="font-extrabold text-white text-lg">{itemCount}</Text>
+          <Text
+            style={{
+              fontWeight: "bold",
+              color: "#fff",
+              fontSize: 18,
+            }}
+          >
+            {itemCount}
+          </Text>
         </View>
 
-        <Text className="flex-1 text-center font-extrabold text-white text-lg">
+        <Text
+          style={{
+            flex: 1,
+            textAlign: "center",
+            fontWeight: "bold",
+            color: "#fff",
+            fontSize: 18,
+          }}
+        >
           View Cart
         </Text>
-        <Text className="font-extrabold text-white text-lg">
+        <Text
+          style={{
+            fontWeight: "bold",
+            color: "#fff",
+            fontSize: 18,
+          }}
+        >
           ${totalAmount}
         </Text>
       </TouchableOpacity>
