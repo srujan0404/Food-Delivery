@@ -26,7 +26,7 @@ export default function DeliveryScreen() {
   };
 
   return (
-    <View className="flex-1">
+    <View style={{ flex: 1 }}>
       <MapView
         initialRegion={{
           latitude: restaurant.lat,
@@ -34,7 +34,7 @@ export default function DeliveryScreen() {
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
-        className="flex-1"
+        style={{ flex: 1 }}
         mapType="standard"
       >
         <Marker
@@ -47,47 +47,92 @@ export default function DeliveryScreen() {
           pinColor={themeColors.bgColor(1)}
         />
       </MapView>
-      <View className="rounded-t-3xl -mt-12 bg-white relative">
-        <TouchableOpacity className="absolute right-4 top-2">
+      <View
+        style={{
+          backgroundColor: "white",
+          borderTopLeftRadius: 40,
+          borderTopRightRadius: 40,
+          marginTop: -12,
+        }}
+      >
+        <TouchableOpacity style={{ position: "absolute", right: 16, top: 8 }}>
           {/* Add any content here if needed */}
         </TouchableOpacity>
-        <View className="flex-row justify-between px-5 pt-10">
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            paddingHorizontal: 20,
+            paddingTop: 40,
+          }}
+        >
           <View>
-            <Text className="text-lg text-gray-700 font-semibold">
+            <Text style={{ fontSize: 18, color: "#4b5563", fontWeight: "600" }}>
               Estimated Arrival
             </Text>
-            <Text className="text-3xl font-extrabold text-gray-700">
+            <Text style={{ fontSize: 28, fontWeight: "800", color: "#4b5563" }}>
               20-30 Minutes
             </Text>
-            <Text className="mt-2 text-gray-700 font-semibold">
+            <Text style={{ marginTop: 8, color: "#4b5563", fontWeight: "600" }}>
               Your Order is on its way
             </Text>
           </View>
           <Image
-            className="h-24 w-24"
+            style={{ height: 96, width: 96 }}
             source={require("../assets/images/bikeGuy2.gif")}
           />
         </View>
         <View
-          style={{ backgroundColor: themeColors.bgColor(0.8) }}
-          className="p-2 flex-row justify-between items-center rounded-full my-5 mx-2"
+          style={{
+            backgroundColor: themeColors.bgColor(0.8),
+            padding: 8,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            borderRadius: 9999,
+            marginVertical: 20,
+            marginHorizontal: 8,
+          }}
         >
           <View
-            style={{ backgroundColor: "rgba(255,255,255,0.4)" }}
-            className="p-1 rounded-full"
+            style={{
+              backgroundColor: "rgba(255,255,255,0.4)",
+              padding: 4,
+              borderRadius: 9999,
+            }}
           >
             <Image
-              style={{ backgroundColor: "rgba(255,255,255,0.4)" }}
-              className="w-16 h-16 rounded-full"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.4)",
+                width: 64,
+                height: 64,
+                borderRadius: 9999,
+              }}
               source={require("../assets/images/deliveryGuy.png")}
             />
           </View>
-          <View className="flex-1 ml-3">
-            <Text className="text-lg font-bold text-white">Syed Noman</Text>
-            <Text className="text-white font-semibold">Your Rider</Text>
+          <View style={{ flex: 1, marginLeft: 12 }}>
+            <Text style={{ fontSize: 18, fontWeight: "700", color: "white" }}>
+              Syed Noman
+            </Text>
+            <Text style={{ color: "white", fontWeight: "600" }}>
+              Your Rider
+            </Text>
           </View>
-          <View className="flex-row items-center space-x-3 mr-3">
-            <TouchableOpacity className="bg-white p-2 rounded-full">
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginRight: 12,
+            }}
+          >
+            <TouchableOpacity
+              style={{
+                backgroundColor: "white",
+                padding: 8,
+                borderRadius: 9999,
+              }}
+            >
               <Icon.Phone
                 fill={themeColors.bgColor(1)}
                 stroke={themeColors.bgColor(1)}
@@ -96,7 +141,12 @@ export default function DeliveryScreen() {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={handleCancel}
-              className="bg-white p-2 rounded-full"
+              style={{
+                backgroundColor: "white",
+                padding: 8,
+                borderRadius: 9999,
+                marginLeft: 12,
+              }}
             >
               <Icon.X stroke={"red"} strokeWidth="5" />
             </TouchableOpacity>
